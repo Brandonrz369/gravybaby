@@ -1454,4 +1454,55 @@ if __name__ == "__main__":
     
     # Create and run the job scraper
     scraper = JobScraper(CONFIG, custom_search_query=args.query)
-    scraper.run()
+    
+    # In test mode, just generate sample HTML without scraping
+    if args.test:
+        print("Running in test mode - generating sample HTML report...")
+        
+        # Create sample test data
+        test_jobs = [
+            {
+                "title": "Python Developer (Remote)",
+                "company": "TestCorp Inc.",
+                "description": "Entry-level position for Python developers. Work from anywhere!",
+                "url": "https://example.com/jobs/1",
+                "source": "Indeed",
+                "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "salary": "$70,000 - $90,000"
+            },
+            {
+                "title": "Junior Web Developer",
+                "company": "WebSolutions LLC",
+                "description": "Looking for a junior developer with HTML, CSS, and JavaScript skills.",
+                "url": "https://example.com/jobs/2", 
+                "source": "RemoteOK",
+                "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "salary": "$25/hour"
+            },
+            {
+                "title": "Entry-Level Software Engineer",
+                "company": "StartupCo",
+                "description": "Great opportunity for new graduates. Remote work available.",
+                "url": "https://example.com/jobs/3",
+                "source": "LinkedIn",
+                "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
+        ]
+        
+        # Generate HTML report
+        scraper.generate_html_report(test_jobs)
+        print("Test completed! Check 'jobs.html' to view the sample report.")
+        
+        # If VPN manager is available, test it too
+        if scraper.vpn_manager:
+            print("\nTesting VPN manager...")
+            print(f"License status: {scraper.vpn_manager.get_license_status()['valid']}")
+            if "claude_integration" in scraper.vpn_manager.get_license_status().get("enabled_features", []):
+                params = scraper.vpn_manager.generate_search_parameters("Python developer remote job")
+                print(f"Generated search parameters for 'Python developer remote job':")
+                print(f"- Keywords: {params.get('keywords', [])}")
+                print(f"- Exclude: {params.get('exclude_keywords', [])}")
+                print(f"- Locations: {params.get('locations', [])}")
+    else:
+        # Run the full scraper
+        scraper.run()

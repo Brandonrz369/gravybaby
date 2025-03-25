@@ -928,7 +928,7 @@ def should_rotate_session(url, config):
 def generate_search_params_with_claude(user_query, config=None):
     """
     Generate optimized search parameters based on user query
-    (Local implementation without API call to Claude)
+    Uses Claude API if configured, falls back to local implementation if not
     
     Args:
         user_query: The user's search query or request
@@ -940,7 +940,7 @@ def generate_search_params_with_claude(user_query, config=None):
     if config is None:
         config = load_config()
     
-    # Check if Claude integration is enabled in config (even though we're not using real API)
+    # Check Claude integration config
     claude_config = config["claude_integration"]
     
     # First, check if this is a predefined template
@@ -979,9 +979,77 @@ def generate_search_params_with_claude(user_query, config=None):
         
         if template_key in predefined_params:
             return predefined_params[template_key]
+    
+    # Try to use Claude API if available and configured
+    if claude_config["enabled"] and claude_config["api_key"]:
+        try:
+            import requests
+            import json
+            
+            # Get API credentials
+            api_key = claude_config["api_key"]
+            endpoint = claude_config["endpoint"]
+            model = claude_config["model"]
+            
+            # Prepare the prompt for Claude
+            prompt = f"""
+            I need to extract search parameters for a job search query.
+
+            Query: "{user_query}"
+
+            Please analyze this query and return a JSON object with these fields:
+            1. keywords: List of keywords to include in search (limit to 10 most relevant)
+            2. exclude_keywords: List of terms to exclude from results (like senior, lead, etc.)
+            3. locations: List of locations mentioned or implied in the query
+
+            Return ONLY valid JSON without any explanation or conversation.
+            """
+            
+            # Make Claude API call
+            headers = {
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json"
+            }
+            
+            payload = {
+                "model": model,
+                "max_tokens": 1000,
+                "messages": [
+                    {"role": "user", "content": prompt}
+                ]
+            }
+            
+            logger.info(f"Making Claude API request for: {user_query}")
+            response = requests.post(endpoint, headers=headers, json=payload, timeout=30)
+            response.raise_for_status()
+            
+            # Extract content from response
+            response_data = response.json()
+            content = response_data.get("content", [])
+            if content and len(content) > 0:
+                text = content[0].get("text", "{}")
+                
+                # Try to parse JSON response
+                try:
+                    parameters = json.loads(text)
+                    logger.info(f"Claude API returned parameters: {parameters}")
+                    
+                    # Validate the response format
+                    if isinstance(parameters, dict) and "keywords" in parameters:
+                        return parameters
+                except json.JSONDecodeError:
+                    logger.error(f"Failed to parse Claude API response: {text}")
+            
+            logger.warning("Claude API response was not valid, falling back to local implementation")
         
-    # Analyze the query to generate appropriate parameters
-    # This is a simplified local version of what Claude would do
+        except Exception as e:
+            logger.error(f"Error using Claude API: {e}")
+            logger.warning("Falling back to local parameter generation")
+    else:
+        logger.info("Claude API not configured, using local parameter generation")
+    
+    # Local implementation as fallback
     
     # Convert to lowercase for easier matching
     query_lower = user_query.lower()
@@ -1137,7 +1205,7 @@ def generate_search_params_with_claude(user_query, config=None):
         "locations": locations
     }
     
-    logger.info(f"Generated search parameters: {search_params}")
+    logger.info(f"Generated search parameters using local implementation: {search_params}")
     return search_params
 
 def fetch_with_retry(url, params=None, config=None, session=None, verify_ssl=True, timeout=30, force_fresh=False):
@@ -2115,9 +2183,30 @@ class VPNManager:
         """
         if api_key:
             self.config["claude_integration"]["api_key"] = api_key
+            # Enable Claude integration when API key is set
+            self.config["claude_integration"]["enabled"] = True
         
         if model:
             self.config["claude_integration"]["model"] = model
+            
+        # Save the configuration
+        save_config(self.config)
+        
+        # Test the API key by making a simple request if API key is provided
+        if api_key:
+            try:
+                logger.info("Testing Claude API connection...")
+                params = generate_search_params_with_claude("test query", self.config)
+                if isinstance(params, dict) and "keywords" in params:
+                    logger.info("Claude API test successful")
+                    return True
+                else:
+                    logger.warning("Claude API test returned unexpected format")
+            except Exception as e:
+                logger.error(f"Error testing Claude API: {e}")
+                # Don't disable integration - might be temporary error
+                
+        return True
         
         # Enable Claude integration if API key is set
         if api_key and api_key.strip():
