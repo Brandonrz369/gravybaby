@@ -1,5 +1,16 @@
 # Gravy Jobs
 
+## Testing Instructions
+
+To run the application:
+
+\\n
+## Premium Features
+
+Use this test license key: \n
+
+# Gravy Jobs
+
 Gravy Jobs is an automated job scraper designed to help you find suitable job opportunities with minimal effort. It searches various job platforms for listings that match your specified criteria, aggregates the results, and presents them in an easily digestible format.
 
 ## Features
