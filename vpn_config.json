@@ -1,0 +1,301 @@
+{
+  "proxy_services": {
+    "enabled": false,
+    "current_service": null,
+    "brightdata": {
+      "enabled": false,
+      "zone": "your_zone_here",
+      "username": "your_username_here",
+      "password": "your_password_here",
+      "port": 22225,
+      "country": "us",
+      "session_id": "gravy_jobs_session",
+      "country_pool": [
+        "us",
+        "uk",
+        "ca",
+        "au",
+        "de",
+        "fr",
+        "jp",
+        "sg"
+      ]
+    },
+    "oxylabs": {
+      "enabled": false,
+      "username": "your_username_here",
+      "password": "your_password_here",
+      "port": 10000,
+      "endpoint": "us.oxylabs.io",
+      "country": "us",
+      "country_pool": [
+        "us",
+        "gb",
+        "ca",
+        "au",
+        "de",
+        "fr",
+        "jp",
+        "sg"
+      ]
+    },
+    "smartproxy": {
+      "enabled": false,
+      "username": "your_username_here",
+      "password": "your_password_here",
+      "endpoint": "us.smartproxy.com",
+      "port": 10000,
+      "country_pool": [
+        "us",
+        "gb",
+        "ca",
+        "au",
+        "de",
+        "fr",
+        "jp",
+        "sg"
+      ]
+    },
+    "proxymesh": {
+      "enabled": false,
+      "username": "your_username_here",
+      "password": "your_password_here",
+      "endpoint": "us.proxymesh.com",
+      "port": 31280
+    },
+    "zenrows": {
+      "enabled": false,
+      "api_key": "your_api_key_here",
+      "endpoint": "https://api.zenrows.com/v1/",
+      "country_pool": [
+        "us",
+        "gb",
+        "ca",
+        "au",
+        "de",
+        "fr",
+        "jp",
+        "sg"
+      ]
+    },
+    "scraperapi": {
+      "enabled": false,
+      "api_key": "your_api_key_here",
+      "endpoint": "http://api.scraperapi.com",
+      "country_pool": [
+        "us",
+        "uk",
+        "ca",
+        "au",
+        "de",
+        "fr",
+        "jp",
+        "sg"
+      ]
+    }
+  },
+  "browser_fingerprints": {
+    "enabled": true,
+    "fingerprints": [
+      {
+        "user_agent": null,
+        "screen": {
+          "width": 1920,
+          "height": 1080,
+          "color_depth": 24
+        },
+        "platform": "MacIntel",
+        "languages": [
+          "de-DE"
+        ],
+        "timezone_offset": 180,
+        "webgl": {
+          "vendor": "Apple",
+          "renderer": "ANGLE (AMD, AMD Radeon RX 580 Direct3D11 vs_5_0 ps_5_0)"
+        },
+        "canvas_hash": "39027dfad5138c9ca0c474d71db915c3",
+        "audio_hash": "2b0ab238c29c0370d79b2a5556c8c4e37d0888d8",
+        "font_list_length": 144,
+        "id": "c464da1a592db0e5"
+      },
+      {
+        "user_agent": null,
+        "screen": {
+          "width": 1024,
+          "height": 768,
+          "color_depth": 32
+        },
+        "platform": "Linux x86_64",
+        "languages": [
+          "zh-CN"
+        ],
+        "timezone_offset": -300,
+        "webgl": {
+          "vendor": "AMD",
+          "renderer": "Apple M2"
+        },
+        "canvas_hash": "fd3393cd1e50da172c0dd7769f4f8ee2",
+        "audio_hash": "ee9f4592527759f0f499a8773eee17acd4903a5a",
+        "font_list_length": 182,
+        "id": "0fe0ab0ab82a1228"
+      },
+      {
+        "user_agent": null,
+        "screen": {
+          "width": 1440,
+          "height": 900,
+          "color_depth": 24
+        },
+        "platform": "Linux armv8l",
+        "languages": [
+          "en-GB"
+        ],
+        "timezone_offset": 0,
+        "webgl": {
+          "vendor": "Apple",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 Direct3D11 vs_5_0 ps_5_0)"
+        },
+        "canvas_hash": "c6142bd27b45cbb8b70c0c79956a49ad",
+        "audio_hash": "d269df31f4fdb36f37522762ceed164b5869e886",
+        "font_list_length": 72,
+        "id": "e9f927f21ff87b46"
+      },
+      {
+        "user_agent": null,
+        "screen": {
+          "width": 1280,
+          "height": 1024,
+          "color_depth": 32
+        },
+        "platform": "Linux x86_64",
+        "languages": [
+          "en-US"
+        ],
+        "timezone_offset": 60,
+        "webgl": {
+          "vendor": "Intel Inc.",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 Direct3D11 vs_5_0 ps_5_0)"
+        },
+        "canvas_hash": "66905e38483aad696acf1e73a3c56c77",
+        "audio_hash": "5982ee9c416e922fc18adc43d577a4aead8a87ce",
+        "font_list_length": 37,
+        "id": "9e7f4dcc095bb084"
+      },
+      {
+        "user_agent": null,
+        "screen": {
+          "width": 1024,
+          "height": 768,
+          "color_depth": 16
+        },
+        "platform": "Linux x86_64",
+        "languages": [
+          "pt-BR"
+        ],
+        "timezone_offset": 300,
+        "webgl": {
+          "vendor": "Intel Inc.",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 Direct3D11 vs_5_0 ps_5_0)"
+        },
+        "canvas_hash": "55c464753fb9fe6d4bc858cd956467f4",
+        "audio_hash": "05559bfda04a34138213e376613d67bff6322f03",
+        "font_list_length": 37,
+        "id": "02cb3d6d975b5fd3"
+      }
+    ],
+    "current_fingerprint_index": 0
+  },
+  "licensing": {
+    "license_key": "TEST-GRAVY-JOBS-12345",
+    "valid_until": "2026-03-25T11:57:11.977976",
+    "enabled_features": [
+      "basic_scraping",
+      "commercial_proxies",
+      "advanced_scraping",
+      "claude_integration",
+      "general_scraping"
+    ],
+    "license_server": "https://api.gravyjobs.com/license/verify",
+    "last_verified": "2025-03-25T11:57:11.977997"
+  },
+  "claude_integration": {
+    "enabled": false,
+    "api_key": "",
+    "endpoint": "https://api.anthropic.com/v1/messages",
+    "model": "claude-3-opus-20240229",
+    "custom_search_templates": {
+      "default": "Search for entry-level programming jobs with keywords like 'beginner', 'junior', 'html', 'css'.",
+      "msp_provider": "Search for companies looking for Managed Service Providers (MSPs) with keywords like 'IT support', 'managed services', 'IT outsourcing'.",
+      "data_science": "Search for data science and machine learning jobs with keywords like 'data scientist', 'machine learning', 'AI', 'analytics'.",
+      "devops": "Search for DevOps and cloud infrastructure jobs with keywords like 'AWS', 'Azure', 'DevOps', 'Kubernetes', 'Docker'.",
+      "remote_only": "Search for fully remote software development jobs with keywords like 'remote', 'work from home', 'distributed team'."
+    }
+  },
+  "proxies": [
+    null,
+    {
+      "http": "socks5://127.0.0.1:8080",
+      "https": "socks5://127.0.0.1:8080"
+    },
+    {
+      "http": "socks5://127.0.0.1:8081",
+      "https": "socks5://127.0.0.1:8081"
+    }
+  ],
+  "user_agents": [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:123.0) Gecko/20100101 Firefox/123.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/123.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  ],
+  "rotation_settings": {
+    "delay_between_requests": {
+      "min": 2,
+      "max": 7
+    },
+    "retry_delay": {
+      "min": 10,
+      "max": 30
+    },
+    "max_retries": 5,
+    "cache_expiry_hours": 24,
+    "auto_rotate_on_block": true,
+    "rotate_ip_with_fingerprint": true,
+    "fingerprint_rotation_frequency": 10
+  },
+  "site_settings": {
+    "indeed.com": {
+      "high_scrutiny": true,
+      "extra_delay": 2,
+      "max_requests_per_session": 10
+    },
+    "remoteok.com": {
+      "high_scrutiny": true,
+      "extra_delay": 1,
+      "max_requests_per_session": 5
+    },
+    "linkedin.com": {
+      "high_scrutiny": true,
+      "extra_delay": 3,
+      "max_requests_per_session": 8
+    },
+    "freelancer.com": {
+      "high_scrutiny": false,
+      "extra_delay": 0,
+      "max_requests_per_session": 20
+    },
+    "craigslist.org": {
+      "high_scrutiny": false,
+      "extra_delay": 1,
+      "max_requests_per_session": 15
+    }
+  },
+  "current_proxy_index": 0,
+  "current_user_agent_index": 0,
+  "site_request_counts": {},
+  "total_request_count": 0
+}

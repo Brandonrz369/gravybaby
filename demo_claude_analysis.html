@@ -1,0 +1,2512 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Claude-Analyzed Gravy Jobs</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                color: #333;
+                background-color: #f4f4f4;
+            }
+            .container {
+                width: 85%;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #2c3e50;
+            }
+            h2 {
+                color: #3498db;
+                padding-bottom: 5px;
+                border-bottom: 2px solid #3498db;
+                margin-top: 30px;
+            }
+            .job-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+            .job-card {
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 15px;
+                transition: transform 0.3s ease;
+            }
+            .job-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .amazing {
+                border-left: 5px solid #2ecc71;
+            }
+            .great {
+                border-left: 5px solid #3498db;
+            }
+            .good {
+                border-left: 5px solid #f39c12;
+            }
+            .decent {
+                border-left: 5px solid #95a5a6;
+            }
+            .challenging {
+                border-left: 5px solid #e74c3c;
+            }
+            .job-title {
+                color: #2c3e50;
+                font-size: 18px;
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+            .job-details {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            .job-company {
+                color: #7f8c8d;
+                font-weight: bold;
+            }
+            .job-source {
+                color: #95a5a6;
+                font-size: 14px;
+            }
+            .job-salary {
+                color: #27ae60;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .gravy-score {
+                display: inline-block;
+                font-size: 14px;
+                padding: 3px 8px;
+                border-radius: 12px;
+                color: white;
+                margin-bottom: 10px;
+            }
+            .score-amazing {
+                background-color: #2ecc71;
+            }
+            .score-great {
+                background-color: #3498db;
+            }
+            .score-good {
+                background-color: #f39c12;
+            }
+            .score-decent {
+                background-color: #95a5a6;
+            }
+            .score-challenging {
+                background-color: #e74c3c;
+            }
+            .job-description {
+                font-size: 14px;
+                color: #555;
+                margin-bottom: 15px;
+            }
+            .gravy-reasons {
+                font-size: 13px;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-radius: 5px;
+                margin-bottom: 15px;
+            }
+            .gravy-reasons ul {
+                margin: 0;
+                padding-left: 20px;
+            }
+            .gravy-reasons li {
+                margin-bottom: 3px;
+            }
+            .job-link {
+                display: inline-block;
+                background: #3498db;
+                color: white;
+                padding: 8px 15px;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 14px;
+                transition: background 0.3s ease;
+            }
+            .job-link:hover {
+                background: #2980b9;
+            }
+            .search-filters {
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 30px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .filters-title {
+                margin-top: 0;
+                color: #2c3e50;
+            }
+            .filter-options {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            .filter-tag {
+                background: #e0e0e0;
+                padding: 5px 12px;
+                border-radius: 15px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+            .filter-tag:hover, .filter-tag.active {
+                background: #3498db;
+                color: white;
+            }
+            .explanation {
+                background: #eaf4fd;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 30px;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            .text-warning {
+                color: #e74c3c;
+            }
+            .gravy-tag {
+                display: inline-block;
+                font-size: 12px;
+                background: #2ecc71;
+                color: white;
+                padding: 1px 6px;
+                border-radius: 10px;
+                margin-right: 5px;
+                margin-bottom: 5px;
+            }
+            @media (max-width: 768px) {
+                .container {
+                    width: 95%;
+                }
+                .job-list {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🍯 Claude-Analyzed Gravy Jobs 🍯</h1>
+            
+            <div class="explanation">
+                <p><strong>What makes a job "gravy"?</strong> Claude has deeply analyzed these jobs based on:</p>
+                <ul>
+                    <li>How easy/entry-level the job appears to be</li>
+                    <li>Salary information (higher pay = more gravy)</li>
+                    <li>Remote work options</li>
+                    <li>Beginner-friendly technologies (HTML/CSS, WordPress, etc.)</li>
+                    <li>Red flags (advanced skills, senior positions)</li>
+                </ul>
+                <p>Each job has been assigned a "Gravy Score" from 0-100 by Claude. The higher the score, the more this job is considered easy, well-paying, and beginner-friendly.</p>
+                <p>The categories are:</p>
+                <ul>
+                    <li>🔥 <strong>Amazing</strong> (70-100): Super easy + great pay</li>
+                    <li>💎 <strong>Great</strong> (50-69): Very good beginner opportunities</li>
+                    <li>👍 <strong>Good</strong> (30-49): Solid entry-level jobs</li>
+                    <li>🙂 <strong>Decent</strong> (10-29): Worth considering</li>
+                    <li>⚠️ <strong>Challenging</strong> (0-9): May be more difficult for beginners</li>
+                </ul>
+            </div>
+            
+            <div class="search-filters">
+                <h3 class="filters-title">Quick Filters</h3>
+                <div class="filter-options">
+                    <div class="filter-tag active" onclick="filterJobs('all')">All Jobs</div>
+                    <div class="filter-tag" onclick="filterJobs('remote')">Remote Only</div>
+                    <div class="filter-tag" onclick="filterJobs('salary')">Has Salary</div>
+                    <div class="filter-tag" onclick="filterJobs('amazing')">Amazing Only</div>
+                    <div class="filter-tag" onclick="filterJobs('great')">Great & Above</div>
+                    <div class="filter-tag" onclick="filterJobs('good')">Good & Above</div>
+                </div>
+            </div>
+    
+            <h2>🔥 Amazing Opportunities (1)</h2>
+            <div class="job-list">
+        
+        <div class="job-card amazing" data-remote="true" data-salary="true">
+            <h3 class="job-title">Junior Developer - HTML/CSS</h3>
+            <div class="job-details">
+                <div class="job-company">WebCraft Solutions</div>
+                <div class="job-source">Freelancer</div>
+            </div>
+            <div class="gravy-score score-amazing">Gravy Score: 80</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">HTML/CSS</span><span class="gravy-tag">Entry-Level</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $25-30/hour</div>
+            <div class="job-description">Looking for a junior developer to help with simple website designs. No prior experience necessary, just a good understanding of HTML/CSS and basic JavaScript. Remote work available.</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Entry-level position explicitly mentioned in title (Junior Developer)</li><li>Remote work available as mentioned in description</li><li>Only requires basic HTML/CSS knowledge and some JavaScript</li><li>Clearly states "no prior experience necessary"</li><li>Good salary range offered ($25-30/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://example.com/job1" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+            </div>
+        
+            <h2>💎 Great Opportunities (80)</h2>
+            <div class="job-list">
+        
+        <div class="job-card great" data-remote="true" data-salary="true">
+            <h3 class="job-title">WordPress Developer for Small Business</h3>
+            <div class="job-details">
+                <div class="job-company">Creative Agency</div>
+                <div class="job-source">Craigslist (newyork)</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 51</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">WordPress</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $22/hour</div>
+            <div class="job-description">We need a WordPress developer to help with simple designs and updates to our client websites. Flexible hours, partial remote work available.</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://example.com/job2" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Entry-Level Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Tech Solutions Inc.</div>
+                <div class="job-source">Indeed</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 57</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">We are looking for an entry-level web developer to join our team. Knowledge of HTML/CSS required, with some JavaScript experience preferred.</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://example.com/job3" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Beginner Friendly Frontend Developer</h3>
+            <div class="job-details">
+                <div class="job-company">StartupXYZ</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 58</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Looking for a frontend developer with 1-2 years of experience in React. Must be able to work with APIs and implement responsive designs. Some remote work possible.</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://example.com/job4" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">[Full Remote] Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Joinrs US</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 60</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/full-remote-junior-web-developer-at-joinrs-us-4192075029?position=38&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=n6hFqEuxR5Ji7gjSBtYZBQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">[Full Remote] Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Joinrs US</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/full-remote-junior-web-developer-at-joinrs-us-4192075029?position=17&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=ao%2BEMcaC6l6KEsTsyL1U%2FQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">[Full Remote] Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Joinrs US</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/full-remote-junior-web-developer-at-joinrs-us-4192075029?position=38&pageNum=0&refId=CStma5xomCyHKO1fXF3PcQ%3D%3D&trackingId=NHsEfxl%2FGSBZMPv7MlcPZA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">[Full Remote] Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Joinrs US</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 63</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/full-remote-junior-web-developer-at-joinrs-us-4192075029?position=17&pageNum=0&refId=w5hZpFY6XvcY64WCc813GQ%3D%3D&trackingId=Az6JyU4q4yu93OOhobBXGA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true" data-salary="true">
+            <h3 class="job-title">Train as an Entry Level Software Developer and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (denver)</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 64</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+Start an online coding boot camp at The Tech Academy and land a lucrative tech career. The Tech Academy started in 2014 and has won several major awards for Best Coding Boot Camp. We have trained people in a wide range of technical specialties, including: AI, coding, cybe...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://denver.craigslist.org/sof/d/denver-train-as-an-entry-level-software/7833894357.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Engineer, Entry to Junior Level</h3>
+            <div class="job-details">
+                <div class="job-company">WOOD Consulting Services, Inc.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 58</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: San Antonio, TX</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-engineer-entry-to-junior-level-at-wood-consulting-services-inc-4189127548?position=42&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=HvshfaomDXVZ5IsE7898Ug%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Engineer, Entry to Junior Level</h3>
+            <div class="job-details">
+                <div class="job-company">WOOD Consulting Services, Inc.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 60</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: San Antonio, TX</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-engineer-entry-to-junior-level-at-wood-consulting-services-inc-4189127548?position=42&pageNum=0&refId=c10qFI8tSJLLdffuJKrRhA%3D%3D&trackingId=xXSOuFFP1ECo6j01EG9OjA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Wordpress Developer</h3>
+            <div class="job-details">
+                <div class="job-company">SMB Team</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">WordPress</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Philadelphia, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-wordpress-developer-at-smb-team-4181438634?position=6&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=lfCuzLggNvsOxF2c4uo2aw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Wordpress Developer</h3>
+            <div class="job-details">
+                <div class="job-company">SMB Team</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">WordPress</span><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Philadelphia, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-wordpress-developer-at-smb-team-4181438634?position=6&pageNum=0&refId=CStma5xomCyHKO1fXF3PcQ%3D%3D&trackingId=pxQCsWKFuJa6oYbbiuSJ%2Bw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 60</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Virginia, United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181404524?position=16&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=%2F6kG4qUDBxNvIBOzeXpJ4g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Developer</h3>
+            <div class="job-details">
+                <div class="job-company">United Wheels Inc.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Miamisburg, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-developer-at-united-wheels-inc-4184036823?position=20&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=CCdUmyDyH7QLTKJzX7zrGw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Los Angeles, CA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181405446?position=25&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=NDn2JMKq640wOaCClsIqsw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">IntelliBridge</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 63</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Washington, DC</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-web-developer-at-intellibridge-4181439979?position=28&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=qjcqjtD8Asj1L%2F8v5T6vkg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 64</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Colorado Springs, CO</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181402550?position=30&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=xOkDYrUjrngUhBaz78Voyw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 65</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Patterson, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181407408?position=36&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=Sf9Yr89AHQTYQry0cOBDYA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">AERMOR</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 66</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Panama City, FL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-web-developer-at-aermor-4187664209?position=39&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=91%2FK9PRgysoFv%2Bv3WVCzFw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 67</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Huntsville, AL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181404523?position=47&pageNum=0&refId=ME3Vpwjr5en1Iy%2BBJep%2BuQ%3D%3D&trackingId=Sb1A9ttJM5JI9rLJc2cVJg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Developer</h3>
+            <div class="job-details">
+                <div class="job-company">United Wheels Inc.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 68</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Miamisburg, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-developer-at-united-wheels-inc-4184036823?position=3&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=BuoE0TLzIfoRaOwSgDTWzQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 69</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Virginia, United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181404524?position=4&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=UFZQu0RNkLpajNcQ1Vp1NA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 55</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Los Angeles, CA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181405446?position=6&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=Otks%2Ba1RRPFSWG%2Bxg%2FzhQQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 56</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Colorado Springs, CO</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181402550?position=7&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=Dsp12kaL0BPHTPgf3WdoiQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 57</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Patterson, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181407408?position=10&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=qh6rdTxLQEsVAso6PGqqGg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 58</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Huntsville, AL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181404523?position=11&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=rxvGp3BWjp4%2F1ryRF08Z1g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front End Developer</h3>
+            <div class="job-details">
+                <div class="job-company">U.S. Renal Care</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 59</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Nashville, TN</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-developer-at-u-s-renal-care-4119109553?position=12&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=tn5eXNhSkqg3bUJw5JAQAw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Frontend Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">First Community Credit Union</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Coquille, OR</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-frontend-web-developer-at-first-community-credit-union-4160112458?position=45&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=zfCwk%2FJR%2Bt%2Bd%2B90Wx2h39g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Backend Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">AscendEX</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: New York, NY</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-backend-engineer-at-ascendex-4188122041?position=4&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=ix17klhEj7GKp9NjjNvSkw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer - Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">CGI</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 63</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Pittsburgh, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-cgi-4169653489?position=5&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=OneWoPFCRBlZvaIrzI0srA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer -- Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">CGI</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 64</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Henderson, NV</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-cgi-4167387845?position=6&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=WFyXW9YFycC74QZJohOaLg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Full Stack Developer (Non Sponsoring)</h3>
+            <div class="job-details">
+                <div class="job-company">Worldpay</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 65</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Cincinnati, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-full-stack-developer-non-sponsoring-at-worldpay-4189694653?position=7&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=taIjci9uipZbwIiqtmkBVw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">BookedBy</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 66</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Austin, Texas Metropolitan Area</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-bookedby-4185799734?position=14&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=N54795q2wOU%2FMj34661%2BHQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer -- Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">CGI</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 67</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Richmond, VA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-cgi-4185385387?position=19&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=vjZO%2BzV6LwTJ2jYS4a1CNw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Leidos</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 69</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Lawton, OK</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-leidos-4185905792?position=40&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=Xx%2BGk3SiD8oH0G1A917gfw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior AI Developer</h3>
+            <div class="job-details">
+                <div class="job-company">BookedBy</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 55</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Austin, TX</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-ai-developer-at-bookedby-4188808249?position=43&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=PJw1Fp6SyoJtwzrVd3zBIg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Northstrat Incorporated</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 56</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Aurora, CO</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-developer-at-northstrat-incorporated-4113707845?position=1&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=dHRdOXJUxt0VuhXI0XpgMg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer (Virtual, Full-time)</h3>
+            <div class="job-details">
+                <div class="job-company">WealthCounsel, LLC</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 57</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Jersey City, NJ</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-virtual-full-time-at-wealthcounsel-llc-4125167474?position=2&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=7%2F0rnJ%2FY9hedyrZnB5R3TQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior React Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Proven Recruiting</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 58</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Plano, TX</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-react-developer-at-proven-recruiting-4185645355?position=3&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=q1h01ZKQUpglCk%2BL7RADkg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">AERMOR</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 59</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Panama City, FL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-web-developer-at-aermor-4187664209?position=4&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=9qKnNSLzmDAze5COxWCZtg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Developer</h3>
+            <div class="job-details">
+                <div class="job-company">United Wheels Inc.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 60</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Miamisburg, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-developer-at-united-wheels-inc-4184036823?position=5&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=u3lHLnD4AYULAnWo%2BbenUg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">GliaCell Technologies</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Laurel, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-gliacell-technologies-3934935498?position=6&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=0xj3xWNhDw3sihI1aL8eig%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Northstrat Incorporated</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Sterling, VA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-developer-at-northstrat-incorporated-4113706929?position=7&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=rKfAEIQMa3GqCGwvjMnY4g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Lensa</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 63</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Indianapolis, IN</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-web-developer-at-lensa-4190189254?position=8&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=8pgLMtgjR6jGsCRHyqfYLg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Full Stack Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Beacon Hill</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 64</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Philadelphia, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-full-stack-developer-at-beacon-hill-4184589128?position=9&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=hRKz5SnSBE4h%2FpGWq5nJ1g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer (On-Site)</h3>
+            <div class="job-details">
+                <div class="job-company">Bizowie Cloud ERP</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 65</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Pittsburgh, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-on-site-at-bizowie-cloud-erp-4126632638?position=10&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=WhDqaPnGhMJS0wiCH3S%2Bzw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">GliaCell Technologies</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 66</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Maryland, United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-gliacell-technologies-4149216299?position=11&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=daYwZJvxBzOhXK3nnw5hjw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">Sourgum Waste</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 67</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Jersey City, NJ</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-sourgum-waste-4161547322?position=12&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=qBR%2F3BKCal%2FgQHPVu8rDOQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">GliaCell Technologies</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 68</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Columbia, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-gliacell-technologies-3934285276?position=13&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=hVcOgqt0Suj8i2A9JVliFg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 69</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Virginia, United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181404524?position=14&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=KrEd%2BeRviv4jcBwyUq%2BCog%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">IntelliBridge</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 55</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Washington, DC</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-web-developer-at-intellibridge-4181439979?position=15&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=LhRAZFU4fhC7DhGKCjnvHg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 56</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Los Angeles, CA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181405446?position=18&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=qVaw4nHLZWwwYZcZlgZEHw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">Synergy ECP</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 57</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Fort Meade, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-synergy-ecp-3997339352?position=19&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=o45uO8bVvMIqDqkAQamWmw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Queen's Student Alumni Association</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 58</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: New Year, MT</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-queen-s-student-alumni-association-4190102602?position=22&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=SjeH2dYjPRamNRLuRGUkrQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Web Developer</h3>
+            <div class="job-details">
+                <div class="job-company">TieTalent</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 59</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Devon, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-web-developer-at-tietalent-4186601994?position=29&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=MV%2FShFRngaMd3imyvzDUNA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior JavaScript / ServiceNow Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Perficient</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 60</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-javascript-servicenow-developer-at-perficient-4177853309?position=30&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=VoAWk0BdrRHBKvFI%2FKr2gA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Queen's Student Alumni Association</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: New Year, MT</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-queen-s-student-alumni-association-4189279110?position=31&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=CNA1vOXrTt2ccux126DEkQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Developer (2025-3104)</h3>
+            <div class="job-details">
+                <div class="job-company">Prolink</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-developer-2025-3104-at-prolink-4168165200?position=32&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=ReVRO3rGaeqQpND3iJeCTg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front-End Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Modern Technology Solutions, Inc. (MTSI)</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 63</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Colorado Springs, CO</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-software-developer-at-modern-technology-solutions-inc-mtsi-4181402550?position=33&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=YmwVvADlDUAMbmEj%2F6Gt8w%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Central Garden & Pet</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 64</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Schaumburg, IL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-central-garden-pet-4135553883?position=35&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=J8rFN5T%2B6xEf92MRjg40Gg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior AI/ML Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Paradyme, a CATHEXIS Company</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 65</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Redwood City, CA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-ai-ml-software-developer-at-paradyme-a-cathexis-company-4116226442?position=40&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=fTVjkEeFBR6qEjG4B1anQg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Front End Developer</h3>
+            <div class="job-details">
+                <div class="job-company">U.S. Renal Care</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 66</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Nashville, TN</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-front-end-developer-at-u-s-renal-care-4119109553?position=41&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=Xo8eLwG1oZFMZVqefJOHTg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Development Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">Nexio</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 67</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Orem, UT</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-development-engineer-at-nexio-4185661815?position=42&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=y0mfzwIorLI7Fu3FHezD8A%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Developer / Application Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">Paradyme, a CATHEXIS Company</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 68</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Washington DC-Baltimore Area</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-developer-application-engineer-at-paradyme-a-cathexis-company-4166595531?position=43&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=NrxEwDCyX%2FzIfHcIhBHizA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">BookedBy</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 69</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Austin, Texas Metropolitan Area</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-bookedby-4185799734?position=44&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=aGBebqh9xsYH0nz%2BhnfaFg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Full Stack Developer (.NET, ReactJS)</h3>
+            <div class="job-details">
+                <div class="job-company">Aperia</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 55</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Dallas, TX</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-full-stack-developer-net-reactjs-at-aperia-4189090789?position=45&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=4e0jy2TcG%2FegwcclMKo8fA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Central Garden & Pet</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 56</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Walnut Creek, CA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-central-garden-pet-4135557451?position=46&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=B70fe%2BTaZt9c2czc64RRhw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Full Stack Developer (Non Sponsoring)</h3>
+            <div class="job-details">
+                <div class="job-company">Worldpay</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 57</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Cincinnati, OH</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-full-stack-developer-non-sponsoring-at-worldpay-4189694653?position=47&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=OMVLwM2nS%2FEY6rewQVCz7w%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Central Garden & Pet</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 58</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Daytona Beach, FL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-central-garden-pet-4135559206?position=50&pageNum=0&refId=xOFg736Iv3CUl3IUg74b8g%3D%3D&trackingId=Wb2bH%2FpnS9MbZJCfDhs2kA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer (Entry Level)</h3>
+            <div class="job-details">
+                <div class="job-company">Smart Software Solutions, Inc</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 59</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Vermillion, SD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-smart-software-solutions-inc-4059207926?position=3&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=Jl92QAvLEHL%2BI%2BKvtXh04g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer (Entry Level)</h3>
+            <div class="job-details">
+                <div class="job-company">Smart Software Solutions, Inc</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 60</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Pierre, SD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-smart-software-solutions-inc-4059210609?position=6&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=RIKwhD9a%2BzrdD2wRZK1C0Q%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">S2Technologies, LLC</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 61</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Aberdeen Proving Ground, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-s2technologies-llc-4062319833?position=10&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=2Rj0tfLD8aKVzKt5Jb7UYA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Data Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">Optimum Healthcare IT</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 62</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-data-engineer-at-optimum-healthcare-it-4173664780?position=12&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=CRS50xte4Ee8EgOiPfF%2BRQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Software Developer</h3>
+            <div class="job-details">
+                <div class="job-company">Andromeda Systems Incorporated</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 63</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Jacksonville, FL</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-software-developer-at-andromeda-systems-incorporated-4176957555?position=14&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=1qitjULMW0qwFwG18i%2BDIg%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Entry Level Software Tester/Support Engineer</h3>
+            <div class="job-details">
+                <div class="job-company">365Labs</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 64</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Baton Rouge, LA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/entry-level-software-tester-support-engineer-at-365labs-4173796030?position=15&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=0soQSnPfCYHMxvqrUBaDmQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Developer - Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">CGI</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 65</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Lebanon, VA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-developer-entry-level-at-cgi-4130690077?position=16&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=sS0AKwEJSlprk%2Ff1wKW0BQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Entry Level Full Stack Software Engineer- Fully Cleared (Prime)</h3>
+            <div class="job-details">
+                <div class="job-company">Intelliforce-IT Solutions Group, LLC.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 66</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Annapolis Junction, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/entry-level-full-stack-software-engineer-fully-cleared-prime-at-intelliforce-it-solutions-group-llc-4126178087?position=19&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=%2FNlFo7ix5D6g1Dsg6r0A8A%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Engineer Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">ELEVI Associates</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 67</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Annapolis Junction, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-engineer-entry-level-at-elevi-associates-4072345143?position=21&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=SvjnbooJatvh1evjHvfGLA%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Junior Robotics Software Engineer - Evitado</h3>
+            <div class="job-details">
+                <div class="job-company">Innovation Works</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 68</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Pittsburgh, PA</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/junior-robotics-software-engineer-evitado-at-innovation-works-4145054213?position=23&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=rrH1jE28CSyb%2BzfS5JI%2FXQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card great" data-remote="true">
+            <h3 class="job-title">Software Engineer, Entry Level</h3>
+            <div class="job-details">
+                <div class="job-company">Independent Software, Inc.</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-great">Gravy Score: 69</div>
+            <div class="job-tags"><span class="gravy-tag">Entry-Level</span></div>
+    
+            <div class="job-description">Location: Ellicott City, MD</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>WordPress-focused role which is generally beginner-friendly</li><li>Mentions "simple designs" in the description</li><li>Offers flexible hours and partial remote work</li><li>No advanced frameworks or technologies mentioned</li><li>Pays slightly above average for entry-level ($22/hour)</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/software-engineer-entry-level-at-independent-software-inc-4145771789?position=27&pageNum=0&refId=m5i194bXQQFYxlw7ACY8zQ%3D%3D&trackingId=xFn%2FWIdXL72mRkeZ8uPApw%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+            </div>
+        
+            <h2>🙂 Decent Opportunities (24)</h2>
+            <div class="job-list">
+        
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Software Developer - React/Node.js</h3>
+            <div class="job-details">
+                <div class="job-company">Enterprise Solutions</div>
+                <div class="job-source">RemoteOK</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $85,000-105,000</div>
+            <div class="job-description">Seeking an experienced software developer with 3+ years of experience in React, Node.js, and AWS. Must be able to architect solutions and work in a fast-paced environment.</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://example.com/job5" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Tech Support Specialist</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (austin)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 401K</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+We are looking for a Tech Support Specialist to join our team and help us maintain the highest standard of technical support. This role requires excellent communication skills, a solid understanding of technical concepts, and a passion for problem-solving.
+
+As a Tech Supp...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://austin.craigslist.org/sof/d/pflugerville-tech-support-specialist/7834241952.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Website Designer - Work from home</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (dallas)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $100,000</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+Fast-growing tech startup SiteSwan is looking for independent resellers to take our unique and proven concept national. No tech experience needed, no salary caps, no crazy hours, no scams - work from home on your own terms doing what you love.
+
+SiteSwan is the fastest and...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://dallas.craigslist.org/dal/web/d/addison-website-designer-work-from-home/7830805435.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Website Designer - Work from home</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (phoenix)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $100,000</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+Fast-growing tech startup SiteSwan is looking for independent resellers to take our unique and proven concept national. No tech experience needed, no salary caps, no crazy hours, no scams - work from home on your own terms doing what you love.
+
+SiteSwan is the fastest and...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://phoenix.craigslist.org/cph/web/d/phoenix-website-designer-work-from-home/7830805498.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Website Designer - Work from home</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (losangeles)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $100,000</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+Fast-growing tech startup SiteSwan is looking for independent resellers to take our unique and proven concept national. No tech experience needed, no salary caps, no crazy hours, no scams - work from home on your own terms doing what you love.
+
+SiteSwan is the fastest and...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://losangeles.craigslist.org/wst/web/d/los-angeles-website-designer-work-from/7830805180.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">►⌨️ REMOTE FRONT END DEVELOPER ⌨️◄</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (losangeles)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $15</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+HOW TO APPLY
+PLEASE CLICK HERE TO APPLY
+We maintain a rigorous hiring process to help ensure we only hire the best and most dedicated professionals. Please note that you will not be considered for this position if you fail to follow the instructions when applying.
+WHY YOU...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://losangeles.craigslist.org/lac/web/d/los-angeles-remote-front-end-developer/7835825809.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">►✍ REMOTE GRAPHIC DESIGNER 🎨◄</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (losangeles)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $15</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+HOW TO APPLY
+PLEASE CLICK HERE TO APPLY
+We maintain a rigorous hiring process to help ensure we only hire the best and most dedicated professionals. Please note that you will not be considered for this position if you fail to follow the instructions when applying.
+WHY YOU...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://losangeles.craigslist.org/lac/web/d/los-angeles-remote-graphic-designer/7835822170.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">►💻💡REMOTE FRONT END DEVELOPER⌨️💿◄</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (losangeles)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $15</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+HOW TO APPLY
+PLEASE CLICK HERE TO APPLY
+We maintain a rigorous hiring process to help ensure we only hire the best and most dedicated professionals. Please note that you will not be considered for this position if you fail to follow the instructions when applying.
+WHY YOU...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://losangeles.craigslist.org/lac/web/d/los-angeles-remote-front-end-developer/7831517536.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">►💻✍ REMOTE GRAPHIC DESIGNER 💡◄</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (losangeles)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $15</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+HOW TO APPLY
+PLEASE CLICK HERE TO APPLY
+We maintain a rigorous hiring process to help ensure we only hire the best and most dedicated professionals. Please note that you will not be considered for this position if you fail to follow the instructions when applying.
+WHY YOU...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://losangeles.craigslist.org/lac/web/d/los-angeles-remote-graphic-designer/7831516820.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">NINTEX DEVELOPER – REMOTE</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (losangeles)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span></div>
+    
+            <div class="job-description">QR Code Link to This Post
+
+
+NINTEX DEVELOPER – REMOTE – FOR LOS ANGELES CLIENT
+
+Sierra Cybernetics is seeking a Nintex Developer to work for us supporting our Los Angeles Superior Court client.
+
+This is a remote position but prefer candidates to work West Coast hours.
+
+This is expected to be a 12+ m...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://losangeles.craigslist.org/lac/sof/d/los-angeles-nintex-developer-remote/7829817704.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">User Experience Tester for New Payment Platform $750</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Freelancer</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $465
+                                Average bid</div>
+            <div class="job-description">We are seeking freelancers to participate in a structured user experience test for our new payment platform, FluxPay. This is a one-time, remote opportunity where you’ll go through the platform’s process, evaluate key features, and provide valuable feedback. Those who successfully complete all steps...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.freelancer.com/projects/data-science/user-experience-tester-for-new" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (boston)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://boston.craigslist.org/gbs/sof/d/cambridge-enroll-in-the-software-boot/7836086711.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (denver)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://denver.craigslist.org/sof/d/denver-enroll-in-the-software-boot-camp/7835248970.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (seattle)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://seattle.craigslist.org/see/sof/d/seattle-enroll-in-the-software-boot/7834608811.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (austin)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://austin.craigslist.org/sof/d/austin-enroll-in-the-software-boot-camp/7835249188.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (dallas)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://dallas.craigslist.org/dal/sof/d/dallas-enroll-in-the-software-boot-camp/7835248779.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (sanantonio)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://sanantonio.craigslist.org/sof/d/san-antonio-enroll-in-the-software-boot/7835248865.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (philadelphia)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://philadelphia.craigslist.org/sof/d/philadelphia-enroll-in-the-software/7835248930.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (houston)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://houston.craigslist.org/sof/d/houston-enroll-in-the-software-boot/7835248866.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Enroll in the Software Boot Camp Online Today and Land a Tech Job</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (newyork)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $30</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+The Tech Academy delivers cost-effective and self-paced online coding boot camps that are tailored for beginners with no prior technical or coding knowledge. Our certification programs thoroughly cover in-demand skills for the tech industry, are endorsed by stellar online...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://newyork.craigslist.org/mnh/sof/d/new-york-enroll-in-the-software-boot/7835248740.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">In house IT technician</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Craigslist (sanantonio)</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $50.00</div>
+            <div class="job-description">QR Code Link to This Post
+
+
+I am looking for someone who knows everything about everything if it is on the internet.
+
+I need a person who can maintain and alter my websites. I need a person who con do You Tube videos for me. I need a person who can make and administrate my X account and post for me ...</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://sanantonio.craigslist.org/web/d/san-antonio-in-house-it-technician/7832075060.html" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">IoT Project -- 2</h3>
+            <div class="job-details">
+                <div class="job-company">Unknown</div>
+                <div class="job-source">Freelancer</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Has Salary</span></div>
+    <div class="job-salary">💰 $426
+                                Average bid</div>
+            <div class="job-description">Membuat tugas kuliah S2 mata kuliah Internet of Things untuk membuat proyek kecil perangkat IoT.</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.freelancer.com/projects/amazon-web-services/iot-project-39217163" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Frontend Engineer (Remote)</h3>
+            <div class="job-details">
+                <div class="job-company">Alma</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span></div>
+    
+            <div class="job-description">Location: San Francisco Bay Area</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/frontend-engineer-remote-at-alma-4173788338?position=24&pageNum=0&refId=IuPl2xaY6xdS2Hsdy%2FRPUA%3D%3D&trackingId=mksT01RDa0tf4fRR9v0q5g%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+        <div class="job-card decent" data-remote="true" data-salary="true">
+            <h3 class="job-title">Backend Python Developer (REMOTE)</h3>
+            <div class="job-details">
+                <div class="job-company">1872 Consulting</div>
+                <div class="job-source">LinkedIn</div>
+            </div>
+            <div class="gravy-score score-decent">Gravy Score: 25</div>
+            <div class="job-tags"><span class="gravy-tag">Remote</span></div>
+    
+            <div class="job-description">Location: United States</div>
+            
+        <div class="gravy-reasons">
+            <ul>
+        <li>Mentions "beginner friendly" but requires 1-2 years experience</li><li>Technology stack includes React which has a steeper learning curve</li><li>Salary information not provided</li><li>Some complex requirements like API integration</li><li>Includes some remote work options</li>
+            </ul>
+        </div>
+        
+            <a href="https://www.linkedin.com/jobs/view/backend-python-developer-remote-at-1872-consulting-4188408059?position=29&pageNum=0&refId=t6oT481eF3YoX58YEyTzww%3D%3D&trackingId=W7MP27gynwGaG%2FkcqkBwBQ%3D%3D" class="job-link" target="_blank">Apply Now</a>
+        </div>
+    
+            </div>
+        
+        </div>
+        
+        <script>
+            function filterJobs(filter) {
+                // Remove active class from all filters
+                document.querySelectorAll('.filter-tag').forEach(tag => {
+                    tag.classList.remove('active');
+                });
+                
+                // Add active class to clicked filter
+                event.target.classList.add('active');
+                
+                // Get all job cards
+                const jobs = document.querySelectorAll('.job-card');
+                
+                // Show all jobs first
+                jobs.forEach(job => {
+                    job.style.display = 'block';
+                });
+                
+                // Apply specific filter
+                switch(filter) {
+                    case 'remote':
+                        jobs.forEach(job => {
+                            if (!job.getAttribute('data-remote')) {
+                                job.style.display = 'none';
+                            }
+                        });
+                        break;
+                    case 'salary':
+                        jobs.forEach(job => {
+                            if (!job.getAttribute('data-salary')) {
+                                job.style.display = 'none';
+                            }
+                        });
+                        break;
+                    case 'amazing':
+                        jobs.forEach(job => {
+                            if (!job.classList.contains('amazing')) {
+                                job.style.display = 'none';
+                            }
+                        });
+                        break;
+                    case 'great':
+                        jobs.forEach(job => {
+                            if (!job.classList.contains('amazing') && !job.classList.contains('great')) {
+                                job.style.display = 'none';
+                            }
+                        });
+                        break;
+                    case 'good':
+                        jobs.forEach(job => {
+                            if (!job.classList.contains('amazing') && !job.classList.contains('great') && !job.classList.contains('good')) {
+                                job.style.display = 'none';
+                            }
+                        });
+                        break;
+                }
+            }
+            
+            // Set default filter to all
+            document.addEventListener('DOMContentLoaded', function() {
+                filterJobs('all');
+            });
+        </script>
+    </body>
+    </html>
+    

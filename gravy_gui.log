@@ -1,0 +1,16 @@
+2025-03-25 11:43:27,470 - gravy_gui - WARNING - Job scraper not available. Job search features will be disabled.
+2025-03-25 11:43:27,479 - gravy_gui - WARNING - General scraper not available. General scraping features will be disabled.
+2025-03-25 11:43:27,578 - vpn_manager - WARNING - No SSH_SERVER environment variable found
+2025-03-25 11:43:27,578 - vpn_manager - INFO - You can set it up manually using vpn_setup.sh
+2025-03-25 11:43:27,578 - vpn_manager - WARNING - No license key provided
+2025-03-25 11:43:27,578 - vpn_manager - WARNING - No license key provided
+2025-03-25 11:43:27,578 - gravy_gui - INFO - VPN Manager initialized, license valid: False
+2025-03-25 11:44:43,697 - vpn_manager - ERROR - License verification error: HTTPSConnectionPool(host='api.gravyjobs.com', port=443): Max retries exceeded with url: /license/verify (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x75a4de1e2a20>: Failed to resolve 'api.gravyjobs.com' ([Errno -2] Name or service not known)"))
+2025-03-25 11:45:11,446 - vpn_manager - ERROR - License verification error: HTTPSConnectionPool(host='api.gravyjobs.com', port=443): Max retries exceeded with url: /license/verify (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x75a4de1e3110>: Failed to resolve 'api.gravyjobs.com' ([Errno -2] Name or service not known)"))
+2025-03-25 11:57:11,881 - gravy_gui - WARNING - Job scraper not available. Job search features will be disabled.
+2025-03-25 11:57:11,884 - gravy_gui - WARNING - General scraper not available. General scraping features will be disabled.
+2025-03-25 11:57:11,975 - vpn_manager - WARNING - No SSH_SERVER environment variable found
+2025-03-25 11:57:11,975 - vpn_manager - INFO - You can set it up manually using vpn_setup.sh
+2025-03-25 11:57:11,977 - vpn_manager - INFO - License verified: Test license active
+2025-03-25 11:57:11,980 - vpn_manager - INFO - License verified: Test license active
+2025-03-25 11:57:11,980 - gravy_gui - INFO - VPN Manager initialized, license valid: True

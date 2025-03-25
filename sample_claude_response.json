@@ -1,0 +1,62 @@
+[
+  {
+    "job_id": 1,
+    "gravy_score": 85,
+    "category": "Amazing",
+    "reasoning": [
+      "Entry-level position explicitly mentioned in title (Junior Developer)",
+      "Remote work available as mentioned in description",
+      "Only requires basic HTML/CSS knowledge and some JavaScript",
+      "Clearly states 'no prior experience necessary'",
+      "Good salary range offered ($25-30/hour)"
+    ]
+  },
+  {
+    "job_id": 2,
+    "gravy_score": 67,
+    "category": "Great",
+    "reasoning": [
+      "WordPress-focused role which is generally beginner-friendly",
+      "Mentions 'simple designs' in the description",
+      "Offers flexible hours and partial remote work",
+      "No advanced frameworks or technologies mentioned",
+      "Pays slightly above average for entry-level ($22/hour)"
+    ]
+  },
+  {
+    "job_id": 3,
+    "gravy_score": 42,
+    "category": "Good",
+    "reasoning": [
+      "Position is labeled as entry-level",
+      "Requires knowledge of HTML/CSS which is accessible to beginners",
+      "Some JavaScript knowledge required which adds complexity",
+      "No mention of salary/compensation",
+      "Office-based with no remote options mentioned"
+    ]
+  },
+  {
+    "job_id": 4,
+    "gravy_score": 25,
+    "category": "Decent",
+    "reasoning": [
+      "Mentions 'beginner friendly' but requires 1-2 years experience",
+      "Technology stack includes React which has a steeper learning curve",
+      "Salary information not provided",
+      "Some complex requirements like API integration",
+      "Includes some remote work options"
+    ]
+  },
+  {
+    "job_id": 5,
+    "gravy_score": 5,
+    "category": "Challenging",
+    "reasoning": [
+      "Position requires 3+ years of experience",
+      "Advanced technologies required (React, Node.js, AWS)",
+      "Mentions 'fast-paced environment' suggesting high pressure",
+      "Responsibilities include system architecture decisions",
+      "Does offer good compensation but not suitable for true beginners"
+    ]
+  }
+]
